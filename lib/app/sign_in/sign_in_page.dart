@@ -77,7 +77,7 @@ class SignInPage extends StatelessWidget {
   void _signInWithGoogle(BuildContext context) async {
     final _userModel = Provider.of<UserModel>(context, listen: false);
     AuthUser? _user = await _userModel.signInWithGoogle();
-    debugger();
+
     if (_user != null) {
       debugPrint("Oturum açan user id:" + (_user.toString()));
     }

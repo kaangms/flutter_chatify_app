@@ -10,7 +10,6 @@ class FirestoreDBService implements DBBase {
   @override
   Future<bool> saveUser(AuthUser user) async {
     var _userToMap = user.toMap();
-    debugger();
     await _firebaseFirestore
         .collection(("users"))
         .doc(user.userID)

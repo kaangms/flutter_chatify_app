@@ -74,7 +74,6 @@ class UserRepository implements AuthBase {
       return result ? user : null;
     } else {
       var user = await _firebaseAuthService.signInWithGoogle();
-      debugger();
       var result =
           user != null ? await _firestoreDBService.saveUser(user) : false;
 

@@ -8,7 +8,7 @@ import 'locator.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  print("Setup locator");
+
   setupLocator();
   runApp(MyApp());
 }

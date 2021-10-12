@@ -43,7 +43,6 @@ class FirebaseAuthService implements AuthBase {
       print(user.toString());
       print(
           "------------------------------------------------------------------");
-      debugger();
       return AuthUser(
           userID: user.uid,
           email: user.email ?? user.providerData[0].email,
