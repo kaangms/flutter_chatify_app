@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1024958622395",
+    "project_id": "chatifydb",
+    "storage_bucket": "chatifydb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1024958622395:android:539b37a605adcd0b6b979e",
+        "android_client_info": {
+          "package_name": "com.example.flutter_chatify_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1024958622395-7n70m6ll6vrm7osp38iqsj78r61okjsp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flutter_chatify_app",
+            "certificate_hash": "73a46f12808f76d6878b2884c14dc050d5b0ff5d"
+          }
+        },
+        {
+          "client_id": "1024958622395-aup6ekb2fs59ur8mt2alng2u5pud9pg0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkAvvuOxbtKKG-tA8CpB_TSXNEQHn5VDA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1024958622395-aup6ekb2fs59ur8mt2alng2u5pud9pg0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
