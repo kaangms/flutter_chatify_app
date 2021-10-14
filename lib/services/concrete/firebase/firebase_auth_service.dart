@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_chatify_app/model/auth_user.dart';
 import 'package:flutter_chatify_app/services/abstract/auth_base.dart';
@@ -38,11 +36,11 @@ class FirebaseAuthService implements AuthBase {
     if (user == null) {
       return null;
     } else {
-      print(
-          "------------------------------------------------------------------");
-      print(user.toString());
-      print(
-          "------------------------------------------------------------------");
+      // print(
+      //     "------------------------------------------------------------------");
+      // print(user.toString());
+      // print(
+      //     "------------------------------------------------------------------");
       return AuthUser(
           userID: user.uid,
           email: user.email ?? user.providerData[0].email,
@@ -56,6 +54,7 @@ class FirebaseAuthService implements AuthBase {
     try {
       UserCredential _userCredential = await _firebaseAuth
           .signInWithEmailAndPassword(email: email, password: password);
+
       return _userCredential.user == null
           ? null
           : _userFromFirebase(_userCredential.user);

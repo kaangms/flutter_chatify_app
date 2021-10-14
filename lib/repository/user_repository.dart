@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter_chatify_app/locator.dart';
 import 'package:flutter_chatify_app/model/auth_user.dart';
 import 'package:flutter_chatify_app/services/abstract/auth_base.dart';
@@ -49,20 +47,34 @@ class UserRepository implements AuthBase {
   Future<AuthUser?> signInWithEmailandPassword(
       String email, String password) async {
     if (appMode == AppMode.DEBUG) {
-      return await _fakeAuthenticationService.signInWithEmailandPassword(
+      var user = await _fakeAuthenticationService.signInWithEmailandPassword(
           email, password);
+      var result =
+          // ignore: unnecessary_null_comparison
+          user != null ? await _firestoreDBService.saveUser(user) : false;
+      return result ? user : null;
     } else {
-      return await _firebaseAuthService.signInWithEmailandPassword(
+      var user = await _firebaseAuthService.signInWithEmailandPassword(
           email, password);
+      var result =
+          user != null ? await _firestoreDBService.saveUser(user) : false;
+      return result ? user : null;
     }
   }
 
   @override
   Future<AuthUser?> signInWithFacebook() async {
     if (appMode == AppMode.DEBUG) {
-      return await _fakeAuthenticationService.signInWithFacebook();
+      var user = await _fakeAuthenticationService.signInWithFacebook();
+      var result =
+          // ignore: unnecessary_null_comparison
+          user != null ? await _firestoreDBService.saveUser(user) : false;
+      return result ? user : null;
     } else {
-      return await _firebaseAuthService.signInWithFacebook();
+      var user = await _firebaseAuthService.signInWithFacebook();
+      var result =
+          user != null ? await _firestoreDBService.saveUser(user) : false;
+      return result ? user : null;
     }
   }
 

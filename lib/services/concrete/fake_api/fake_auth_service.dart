@@ -26,7 +26,9 @@ class FakeAuthenticationService implements AuthBase {
     return await Future.delayed(
         Duration(seconds: 2),
         () => AuthUser(
-            userID: "google_user_id_123456", email: "fakeuser@fake.com"));
+            userID: "google_user_id_123456",
+            email: "fakeuser@fake.com",
+            userName: "fake user"));
   }
 
   @override
@@ -34,7 +36,9 @@ class FakeAuthenticationService implements AuthBase {
     return await Future.delayed(
         Duration(seconds: 2),
         () => AuthUser(
-            userID: "facebook_user_id_123456", email: "fakeuser@fake.com"));
+            userID: "facebook_user_id_123456",
+            email: "fakeuser@fake.com",
+            userName: "fake user"));
   }
 
   @override
@@ -43,7 +47,9 @@ class FakeAuthenticationService implements AuthBase {
     return await Future.delayed(
         Duration(seconds: 2),
         () => AuthUser(
-            userID: "created_user_id_123456", email: "fakeuser@fake.com"));
+            userID: "created_user_id_123456",
+            email: "fakeuser@fake.com",
+            userName: "fake user"));
   }
 
   @override
@@ -52,6 +58,8 @@ class FakeAuthenticationService implements AuthBase {
     return await Future.delayed(
         Duration(seconds: 2),
         () => AuthUser(
-            userID: "signIn_user_id_123456", email: "fakeuser@fake.com"));
+            userID: "signIn_user_id_123456",
+            email: "fakeuser@fake.com",
+            userName: "fake user"));
   }
 }

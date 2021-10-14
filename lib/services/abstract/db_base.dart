@@ -5,7 +5,7 @@ import 'package:flutter_chatify_app/model/auth_user.dart';
 
 abstract class DBBase {
   Future<bool> saveUser(AuthUser user);
-  // Future<User> readUser(String userID);
+  Future<AuthUser?> readUser(String userID);
   // Future<bool> updateUserName(String userID, String yeniUserName);
   // Future<bool> updateProfilFoto(String userID, String profilFotoURL);
   // Future<List<User>> getUserwithPagination(

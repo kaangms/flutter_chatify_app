@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_chatify_app/locator.dart';
 import 'package:flutter_chatify_app/model/auth_user.dart';
