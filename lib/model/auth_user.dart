@@ -23,7 +23,7 @@ class AuthUser {
 
   Map<String, dynamic> toMap() {
     print(userName);
-    print("-----------------------------------------")
+    print("-----------------------------------------");
     print(email!.split("@")[0] + randomGetNumber());
     return {
       'userID': userID,
