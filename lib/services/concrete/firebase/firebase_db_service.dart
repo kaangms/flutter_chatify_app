@@ -13,19 +13,46 @@ class FirestoreDBService implements DBBase {
         .doc(user.userID)
         .set(_userToMap);
 
-    DocumentSnapshot<Map<String, dynamic>> _readUser =
-        await _firebaseFirestore.doc("users/${user.userID}").get();
-    var getUser = AuthUser.fromMap(_readUser.data()!);
-    print("---->" + getUser.toString());
+    // DocumentSnapshot<Map<String, dynamic>> _readUser =
+    //     await _firebaseFirestore.doc("users/${user.userID}").get();
+    // var getUser = AuthUser.fromMap(_readUser.data()!);
+    // print("---->" + getUser.toString());
     return true;
   }
 
   @override
-  Future<AuthUser?> readUser(String userID) async {
+  Future<AuthUser?> readUser(String? userID) async {
     DocumentSnapshot<Map<String, dynamic>> _userRef =
         await _firebaseFirestore.doc("users/${userID}").get();
     var _readUser = _userRef.data();
     var getUser = _readUser != null ? AuthUser.fromMap(_readUser) : null;
     return getUser;
+  }
+
+  Future<bool> _checkUserName(String newUserName) async {
+    var users = await _firebaseFirestore
+        .collection("users")
+        .where("userName", isEqualTo: newUserName)
+        .get();
+
+    return users.docs.length > 0;
+  }
+
+  @override
+  Future<bool> updateUserName(String userID, String newUserName) async {
+    return await _checkUserName(newUserName)
+        ? throw (" kullanıcı adı kullanılmakta")
+        : await _firebaseFirestore
+            .collection("users")
+            .doc(userID)
+            .update({"userName": newUserName}).then((value) => true);
+  }
+
+  @override
+  Future<bool> updateProfilUrl(String userID, String profilPhotoURL) async {
+    return await _firebaseFirestore
+        .collection("users")
+        .doc(userID)
+        .update({"profilURL": profilPhotoURL}).then((value) => true);
   }
 }

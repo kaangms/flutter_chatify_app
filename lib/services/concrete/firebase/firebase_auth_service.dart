@@ -36,11 +36,7 @@ class FirebaseAuthService implements AuthBase {
     if (user == null) {
       return null;
     } else {
-      // print(
-      //     "------------------------------------------------------------------");
-      // print(user.toString());
-      // print(
-      //     "------------------------------------------------------------------");
+     
       return AuthUser(
           userID: user.uid,
           email: user.email ?? user.providerData[0].email,

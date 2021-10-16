@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_chatify_app/locator.dart';
 import 'package:flutter_chatify_app/model/auth_user.dart';
@@ -12,7 +14,7 @@ class UserModel with ChangeNotifier implements AuthBase {
   UserRepository _userRepository = locator<UserRepository>();
 
   AuthUser? _user;
-  get user => this._user;
+  AuthUser? get user => this._user;
   ViewState get state => this._state;
   // set user(value) => this._user = value;
   set state(ViewState value) {
@@ -150,5 +152,17 @@ class UserModel with ChangeNotifier implements AuthBase {
       result = false;
     }
     return result;
+  }
+
+  Future<bool> updateUserName(String userID, String userName) async {
+    return await _userRepository.updateUserName(userID, userName);
+  }
+
+  Future<bool> uploadFile(
+    String userID,
+    String fileType,
+    File uploadFile,
+  ) async {
+    return await _userRepository.uploadFile(userID, fileType, uploadFile);
   }
 }

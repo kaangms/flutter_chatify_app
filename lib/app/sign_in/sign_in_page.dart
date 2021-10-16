@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chatify_app/app/sign_in/log_in_with_email_and_password_page.dart';
@@ -46,11 +45,11 @@ class SignInPage extends StatelessWidget {
                 buttonColor: Color(0xFF008AA9),
                 butonIcon: Icon(Icons.email),
                 onPressed: () => _signInWithEmailandPassword(context)),
-            SocialLogInButton(
-                buttonText: "Misafir Girişi",
-                buttonColor: Color(0xFFFF7F00),
-                butonIcon: Icon(Icons.supervised_user_circle),
-                onPressed: () => _anonymousLogIn(context)),
+            // SocialLogInButton(
+            //     buttonText: "Misafir Girişi",
+            //     buttonColor: Color(0xFFFF7F00),
+            //     butonIcon: Icon(Icons.supervised_user_circle),
+            //     onPressed: () => _anonymousLogIn(context)),
           ],
         ),
       ),
@@ -64,6 +63,7 @@ class SignInPage extends StatelessWidget {
     ));
   }
 
+  // ignore: unused_element
   void _anonymousLogIn(BuildContext context) async {
     final _userModel = Provider.of<UserModel>(context, listen: false);
     AuthUser? _user = await _userModel.singInAnonymously();

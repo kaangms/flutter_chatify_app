@@ -62,4 +62,8 @@ class FakeAuthenticationService implements AuthBase {
             email: "fakeuser@fake.com",
             userName: "fake user"));
   }
+
+  bool updateUserName() {
+    return true;
+  }
 }

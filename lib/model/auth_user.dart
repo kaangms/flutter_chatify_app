@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -22,9 +21,9 @@ class AuthUser {
   });
 
   Map<String, dynamic> toMap() {
-    print(userName);
-    print("-----------------------------------------");
-    print(email!.split("@")[0] + randomGetNumber());
+    // print(userName);
+    // print("-----------------------------------------");
+    // print(email!.split("@")[0] + randomGetNumber());
     return {
       'userID': userID,
       'email': email,

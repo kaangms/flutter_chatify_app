@@ -11,12 +11,12 @@ class LandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final _userModel = Provider.of<UserModel>(context, listen: true);
     if (_userModel.state == ViewState.Idle) {
-      if (_userModel.user == null)
-        return SignInPage();
-      else
+      if (_userModel.user != null)
         return HomePage(
-          user: _userModel.user,
+          user: _userModel.user!,
         );
+      else
+        return SignInPage();
     } else {
       return Scaffold(
         body: Center(
