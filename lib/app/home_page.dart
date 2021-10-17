@@ -4,6 +4,8 @@ import 'package:flutter_chatify_app/app/profile_tab.dart';
 import 'package:flutter_chatify_app/app/tab_items.dart';
 import 'package:flutter_chatify_app/app/users_tab.dart';
 import 'package:flutter_chatify_app/model/auth_user.dart';
+import 'package:flutter_chatify_app/view_model/all_users_view_model.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({
@@ -19,13 +21,24 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   TabItem _currentTab = TabItem.Users;
   Map<TabItem, Widget> allPages() {
-    return {TabItem.Users: UsersTab(), TabItem.Profile: ProfileTab()};
+    return {
+      TabItem.Users: ChangeNotifierProvider(
+        create: (context) => AllUserViewModel(),
+        child: UsersTab(),
+      ),
+      TabItem.Profile: ProfileTab()
+    };
   }
 
   Map<TabItem, GlobalKey<NavigatorState>> navigatorKey = {
     TabItem.Users: GlobalKey<NavigatorState>(),
     TabItem.Profile: GlobalKey<NavigatorState>()
   };
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

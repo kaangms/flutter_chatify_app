@@ -13,7 +13,7 @@ class FirebaseStorageService implements StorageBase {
         .ref()
         .child(userID)
         .child(fileType)
-        .child("profil_foto.png");
+        .child("profile_photo.png");
     UploadTask uploadTask = _storageReference!.putFile(uploadFile);
 
     var url = await (await uploadTask).ref.getDownloadURL();

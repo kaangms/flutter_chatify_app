@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter_chatify_app/locator.dart';
 import 'package:flutter_chatify_app/model/auth_user.dart';
+import 'package:flutter_chatify_app/model/message.dart';
 import 'package:flutter_chatify_app/services/abstract/auth_base.dart';
 import 'package:flutter_chatify_app/services/concrete/fake_api/fake_auth_service.dart';
 import 'package:flutter_chatify_app/services/concrete/fake_api/fake_db_service.dart';
@@ -146,6 +147,67 @@ class UserRepository implements AuthBase {
           userID, fileType, uploadFile);
       var result = _firestoreDBService.updateProfilUrl(userID, url);
       return result;
+    }
+  }
+
+  Future<List<AuthUser>> getUserWithPagination(
+      AuthUser? enSonGetirilenUser, int getirilecekElemanSayisi) async {
+    if (appMode == AppMode.DEBUG) {
+      return [];
+    } else {
+      List<AuthUser> _userList = await _firestoreDBService
+          .getUserwithPagination(enSonGetirilenUser, getirilecekElemanSayisi);
+      allUserList.addAll(_userList);
+      return _userList;
+    }
+  }
+
+  Stream<List<Message>> getMessages(
+      String currentUserID, String chattedUserId) {
+    if (appMode == AppMode.DEBUG) {
+      return Stream.empty();
+    } else {
+      return _firestoreDBService.getMessages(currentUserID, chattedUserId);
+    }
+  }
+
+  Future<List<Message>> getMessageWithPagination(
+      String currentUserID,
+      String chattedUserId,
+      Message lastReceivedMessage,
+      int pageViewSendNumber) async {
+    if (appMode == AppMode.DEBUG) {
+      return [];
+    } else {
+      return await _firestoreDBService.getMessagewithPagination(currentUserID,
+          chattedUserId, lastReceivedMessage, pageViewSendNumber);
+    }
+  }
+
+  Future<bool> saveMessage(Message saveMessage, AuthUser currentUser) async {
+    if (appMode == AppMode.DEBUG) {
+      return true;
+    } else {
+      var result = await _firestoreDBService.saveMessage(saveMessage);
+
+      // if (dbYazmaIslemi) {
+      //   var token = "";
+      //   if (kullaniciToken.containsKey(kaydedilecekMesaj.kime)) {
+      //     token = kullaniciToken[kaydedilecekMesaj.kime];
+      //     //print("Localden geldi:" + token);
+      //   } else {
+      //     token = await _firestoreDBService.tokenGetir(kaydedilecekMesaj.kime);
+      //     if (token != null) kullaniciToken[kaydedilecekMesaj.kime] = token;
+      //     //print("Veri tabanından geldi:" + token);
+      //   }
+
+      //   if (token != null)
+      //     await _bildirimGondermeServis.bildirimGonder(
+      //         kaydedilecekMesaj, currentUser, token);
+
+      return true;
+      //   } else
+      // return false;
     }
   }
 }

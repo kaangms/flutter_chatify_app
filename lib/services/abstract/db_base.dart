@@ -1,17 +1,20 @@
 import 'package:flutter_chatify_app/model/auth_user.dart';
-// import 'package:flutter_lovers/model/konusma.dart';
-// import 'package:flutter_lovers/model/mesaj.dart';
-// import 'package:flutter_lovers/model/user.dart';
+import 'package:flutter_chatify_app/model/message.dart';
 
 abstract class DBBase {
   Future<bool> saveUser(AuthUser user);
   Future<AuthUser?> readUser(String userID);
   Future<bool> updateUserName(String userID, String newUserName);
   Future<bool> updateProfilUrl(String userID, String profilPhotoURL);
-  // Future<List<User>> getUserwithPagination(
-  //     User enSonGetirilenUser, int getirilecekElemanSayisi);
-  // Future<List<Konusma>> getAllConversations(String userID);
-  // Stream<List<Mesaj>> getMessages(String currentUserID, String konusulanUserID);
-  // Future<bool> saveMessage(Mesaj kaydedilecekMesaj);
+  Future<List<AuthUser>> getUserwithPagination(
+      AuthUser? lastBroughtUser, int numberOfUserToFetch);
+  Future<List<Message>> getAllConversations(String userID);
+  Stream<List<Message>> getMessages(String currentUserID, String chattedUserID);
+  Future<bool> saveMessage(Message messageToBeAdded);
+  Future<List<Message>> getMessagewithPagination(
+      String currentUserID,
+      String chattedUserId,
+      Message lastReceivedMessage,
+      int pageViewSendNumber);
   // Future<DateTime> saatiGoster(String userID);
 }

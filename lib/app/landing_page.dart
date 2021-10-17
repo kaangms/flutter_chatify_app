@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chatify_app/app/home_page.dart';
 import 'package:flutter_chatify_app/app/sign_in/sign_in_page.dart';
-import 'package:flutter_chatify_app/view_model/user_model.dart';
+import 'package:flutter_chatify_app/view_model/user_view_model.dart';
 import 'package:provider/provider.dart';
 
 class LandingPage extends StatelessWidget {

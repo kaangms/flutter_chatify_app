@@ -32,7 +32,7 @@ class PlatformSensitiveAlertDialog extends PlatformSensitiveWidget {
     return AlertDialog(
       title: Text(header),
       content: Text(content),
-      actions: _dialogButonlariniAyarla(context),
+      actions: _dialogButonsSettings(context),
     );
   }
 
@@ -41,11 +41,11 @@ class PlatformSensitiveAlertDialog extends PlatformSensitiveWidget {
     return CupertinoAlertDialog(
       title: Text(header),
       content: Text(content),
-      actions: _dialogButonlariniAyarla(context),
+      actions: _dialogButonsSettings(context),
     );
   }
 
-  List<Widget> _dialogButonlariniAyarla(BuildContext context) {
+  List<Widget> _dialogButonsSettings(BuildContext context) {
     final allButtons = <Widget>[];
 
     if (Platform.isIOS) {

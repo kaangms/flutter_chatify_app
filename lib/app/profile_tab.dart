@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_chatify_app/common/widget/platform_sensitive_alert_dialog.dart';
 import 'package:flutter_chatify_app/common/widget/social_log_in_button.dart';
-import 'package:flutter_chatify_app/view_model/user_model.dart';
+import 'package:flutter_chatify_app/view_model/user_view_model.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
@@ -190,25 +190,32 @@ class _ProfileTabState extends State<ProfileTab> {
   void _takeAPhoto(BuildContext context) async {
     final XFile? newImageFile =
         await _picker.pickImage(source: ImageSource.camera);
-    File file = File(newImageFile!.path);
-    _uploadProfilUrl(context, file);
-    setState(() {
-      _image = FileImage(file);
-    });
+    if (newImageFile != null) {
+      File file = File(newImageFile.path);
+
+      _uploadProfilUrl(context, file);
+      setState(() {
+        _image = FileImage(file);
+      });
+    }
   }
 
   void _selectFromGallery(BuildContext context) async {
     final XFile? newImageFile =
         await _picker.pickImage(source: ImageSource.gallery);
-    File file = File(newImageFile!.path);
-    _uploadProfilUrl(context, file);
-    setState(() {
-      _image = FileImage(file);
-    });
+    if (newImageFile != null) {
+      File file = File(newImageFile.path);
+
+      _uploadProfilUrl(context, file);
+      setState(() {
+        _image = FileImage(file);
+      });
+    }
   }
 
   void _uploadProfilUrl(BuildContext context, File uploadFile) async {
     final _usermodel = Provider.of<UserModel>(context, listen: false);
+    Navigator.of(context).pop(false);
     await _usermodel.uploadFile(_usermodel.user!.userID!, 'Image', uploadFile);
   }
 }

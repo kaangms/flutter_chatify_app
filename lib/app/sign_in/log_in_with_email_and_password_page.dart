@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chatify_app/common/widget/social_log_in_button.dart';
 import 'package:flutter_chatify_app/model/auth_user.dart';
-import 'package:flutter_chatify_app/view_model/user_model.dart';
+import 'package:flutter_chatify_app/view_model/user_view_model.dart';
 import 'package:provider/provider.dart';
 
 enum FormType { Register, LogIn }
